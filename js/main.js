@@ -1,6 +1,8 @@
 const choices = ["rock", "paper", "scissors"];
 const winners = [];
 
+
+// function for calling the actual game
 function game(){
   for (let i = 0; i <=4; i++){
     playRound(i);
@@ -8,6 +10,7 @@ function game(){
   logWins();
 }
 
+// Generates player and computers choices, compares them and logs results
 function playRound(round){
   const playerSelection = playerChoice();
   const computerSelection = computerChoice();
@@ -16,6 +19,7 @@ function playRound(round){
   console.log(playerSelection);
 }
 
+// prompts to enter r p or s, puts to lowercase for eval, checks spelling
 function playerChoice(){
   let input = prompt('Enter Rock, Paper, or Scissors');
   while(input == null){
@@ -44,17 +48,17 @@ function validateInput(choice){
   if (choices.includes(choice));
   }
 
-  function checkWinner(plChoice, coChoice){
-    if(plChoice === coChoice){
-      return 'Tie';
-      }else if((plChoice === 'rock' && coChoice === 'scissors') ||
-      (plChoice === 'scissors' && coChoice === 'paper') ||
-      (plChoice === 'paper' && coChoice === 'rock')) {
-      return 'Win';
-      }else{
-      return 'Loss'
-      }
+function checkWinner(plChoice, coChoice){
+  if(plChoice === coChoice){
+    return 'Tie';
+    }else if((plChoice === 'rock' && coChoice === 'scissors') ||
+    (plChoice === 'scissors' && coChoice === 'paper') ||
+    (plChoice === 'paper' && coChoice === 'rock')) {
+    return 'Win';
+    }else{
+    return 'Loss'
     }
+  }
 
 function logWins(){
   let playerWins = winners.filter((item)=>item == 'Win').length;
